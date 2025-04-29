@@ -1,16 +1,20 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { AddEmployeeComponent } from './pages/add-employee/add-employee.component';
 import { ViewAllComponent } from './pages/view-all/view-all.component';
+import { SearchEmployeeComponent } from './pages/search-employee/search-employee.component';
+import { EmployeeFormComponent } from './pages/employee-form/employee-form.component';
 
 export const routes: Routes = [
 
-    {
-        path:"addEmployee",
-        component:AddEmployeeComponent
-      },
       {
-        path:"",
+        path:'',
         component:ViewAllComponent
+      },{
+        path:'search',
+        component:SearchEmployeeComponent
       }
+,
+      { path: '', redirectTo: 'employees', pathMatch: 'full' },
+      { path: '', component: EmployeeFormComponent },
+      { path: 'employees/edit/:id', component: EmployeeFormComponent },
+      { path: '**', redirectTo: 'employees' },
 ];

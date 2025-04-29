@@ -1,14 +1,14 @@
-<app-header></app-header>
+<!-- <app-header></app-header>
 <div class="container py-5">
 <main>
     <div class="row justify-content-center">
       <div class="col-md-10 col-lg-8">
         <h4 class="mb-3">Add Employee</h4>
-        <form class="needs-validation" novalidate>
+        <form  (ngSubmit)="onSubmit()" #formRef="ngForm">
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="firstName" class="form-label">Name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+              <input type="text" class="form-control" id="firstName" [(ngModel)]="employee.name"placeholder="" value="" required>
               <div class="invalid-feedback">
                 Valid first name is required.
               </div>
@@ -41,7 +41,61 @@
           </div>
 
           <hr class="my-4">
-           <button class="w-100 btn btn-primary btn-lg" type="submit">Add</button>
+           <button class="w-100 btn btn-primary btn-lg" type="submit" (click)="addCustomer()">Add</button>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+<app-footer></app-footer> -->
+
+
+
+<app-header></app-header>
+<div class="container py-5">
+  <main>
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-8">
+        <h4 class="mb-3">Add Employee</h4>
+        <form (ngSubmit)="addCustomer()" #formRef="ngForm">
+          <div class="row g-3">
+            <!-- Name Input -->
+            <div class="col-sm-6">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" [(ngModel)]="employee.name" name="name" required>
+              <div class="invalid-feedback">
+                Valid name is required.
+              </div>
+            </div>
+
+            <!-- Email Input -->
+            <div class="col-12">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" [(ngModel)]="employee.email" name="email" required>
+              <div class="invalid-feedback">
+                Please enter a valid email.
+              </div>
+            </div>
+
+            <!-- Department Dropdown -->
+            <div class="col-12">
+              <label for="department" class="form-label">Department</label>
+              <select class="form-select" id="department" [(ngModel)]="employee.department" name="department" required>
+                <option value="">Choose...</option>
+                <option value="HR">HR</option>
+                <option value="IT">IT</option>
+                <option value="Finance">Finance</option>
+                <option value="Operations">Operations</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a department.
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+          <!-- Submit Button -->
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Add Employee</button>
         </form>
       </div>
     </div>
